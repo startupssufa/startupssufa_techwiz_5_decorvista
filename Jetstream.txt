@@ -1,0 +1,53 @@
+
+JET STREAM
+
+1. project created
+2. database name env
+3. composer require laravel/jetstream
+4. php artisan jetstream:install livewire
+5. npm install
+6. npm run build 
+
+7.setting in env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=computereducation202@gmail.com
+MAIL_PASSWORD=uzyyfpqenfemsusa
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=computereducation202@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+8. 
+
+Config / fortify.php
+line no 149 uncomment one line code 
+        Features::emailVerification(),
+9. 
+App/models/
+user.php :-
+Authenticatable implements MustVerifyEmail
+10. App/Providers/appserviceprovider.php
+ appserviceprovider work
+
+Schema::defaultStringLength(200)
+use Illuminate\Support\Facades\Schema;
+11. php artisan migrate
+
+
+
+
+MULTI AUTH
+1.database/migration/user_table/add column $table->integer('role');
+2.app/action/fortify/createnewuser/add 'role'=>1
+3.models/user.php/add 'role'
+4.web.php
+
+if(Auth::User()->role==0){
+return view('dashboard');
+}
+else{
+return view('welcom');
+}
+
+
